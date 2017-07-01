@@ -329,3 +329,8 @@ Answer: There is currently no way to restore an IPSW directly from
 Linux. The necessary reverse-engineering has already been done by
 pumpkin, bushing and c1de0x, so that functionality will come in the
 medium-term future.
+
+What's New:
+-----------
+
+- Support for OpenSSL 1.1.0 *Forked by @indra17ramadhan
