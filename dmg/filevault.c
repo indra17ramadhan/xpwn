@@ -177,7 +177,7 @@ void fvClose(AbstractFile* file) {
 		cacheChunk(info, 0);
 	}
 
-	HMAC_CTX_cleanup(&(info->hmacCTX));
+	HMAC_CTX_free(&(info->hmacCTX));
 
 	if(info->headerDirty) {
 		if(info->version == 2) {
@@ -234,7 +234,7 @@ AbstractFile* createAbstractFileFromFileVault(AbstractFile* file, const char* ke
 		hmacKey[i] = curByte;
 	}
 
-	HMAC_CTX_init(&(info->hmacCTX));
+	HMAC_CTX_reset(&(info->hmacCTX));
 	HMAC_Init_ex(&(info->hmacCTX), hmacKey, sizeof(hmacKey), EVP_sha1(), NULL);
 	AES_set_decrypt_key(aesKey, FILEVAULT_CIPHER_KEY_LENGTH * 8, &(info->aesKey));
 	AES_set_encrypt_key(aesKey, FILEVAULT_CIPHER_KEY_LENGTH * 8, &(info->aesEncKey));
